@@ -1,0 +1,10 @@
+<div
+  *ngIf="show"
+  appClickOutside
+  (clickOutside)="close()"
+  [class]="'toast-message ' + type"
+  [ngClass]="{'hide' : hide, 'fixed': fixedStyle}"
+>
+  <div class="message">{{ text }}</div>
+  <button (click)="close()" class="close"></button>
+</div>

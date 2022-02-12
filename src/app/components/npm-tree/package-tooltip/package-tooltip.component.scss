@@ -1,0 +1,24 @@
+.tooltip {
+  position: relative;
+  width: 100%;
+  background: #6c93f1;
+  color: #fff;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  line-height: 130%;
+  font-size: 13px;
+  border: solid 1px #5c7fd3;
+  &::after {
+    border-left: solid transparent 6px;
+    border-right: solid transparent 6px;
+    border-top: solid #6c93f1 6px;
+    bottom: -6px;
+    content: " ";
+    height: 0;
+    left: 50%;
+    margin-left: -6px;
+    position: absolute;
+    width: 0;
+  }
+}

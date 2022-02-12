@@ -1,0 +1,54 @@
+<ng-container *mobxAutorun>
+  <ul *ngIf="isPageReady" class="tree">
+    <ng-template #recursiveList let-list>
+      <li
+        *ngFor="let item of list"
+        [ngClass]="{
+          open: item.isRootLevel || isCompleted(item),
+          completed: isCompleted(item),
+          loading: isInProgress(item),
+          error: isError(item),
+          empty: isEmpty(item)
+        }"
+        #listItem
+      >
+        <div
+          (click)="getPackage($event, item, listItem)"
+          (mouseleave)="removeTooltip()"
+          class="package-item"
+        >
+          <div class="name">{{ item.name }}</div>
+          <div class="info">
+            <div (click)="showTooltip($event, item)" class="icon"></div>
+            <app-package-tooltip
+              *ngIf="selectedTooltip == item"
+              appClickOutside
+              (clickOutside)="removeTooltip()"
+              (click)="$event.stopPropagation()"
+              class="tooltip"
+              [tooltipData]="tooltipData"
+            ></app-package-tooltip>
+          </div>
+        </div>
+        <ul>
+          <ng-container
+            *ngTemplateOutlet="
+              recursiveList;
+              context: { $implicit: item.dependencies }
+            "
+          >
+          </ng-container>
+        </ul>
+      </li>
+    </ng-template>
+    <ng-container
+      *ngTemplateOutlet="recursiveList; context: { $implicit: tree }"
+    ></ng-container>
+  </ul>
+  <app-spinner *ngIf="isPageLoading" class="spinner"></app-spinner>
+  <app-toast-notification
+    *ngIf="isPageError"
+    [fixedStyle]="true"
+    [hideTimeout]="4000"
+  ></app-toast-notification>
+</ng-container>

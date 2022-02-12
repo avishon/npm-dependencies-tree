@@ -1,0 +1,17 @@
+:host {
+    &::after {
+     
+            display: block;
+            content: "";
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            width: 400px;
+            height: 480px;
+            background: url(../assets/images/tree.png) no-repeat right bottom;
+            background-size: cover;
+            opacity: 0.1;
+          
+    }
+}

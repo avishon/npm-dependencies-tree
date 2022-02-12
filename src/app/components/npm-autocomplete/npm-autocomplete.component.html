@@ -1,0 +1,29 @@
+<form *mobxAutorun>
+  <mat-form-field class="search-box">
+    <mat-label>Search package...</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Minimum 2 characters"
+      aria-label="Enter package name"
+      (keyup)="onKeyUp($event)"
+      [pattern]="packageNameRegex"
+      [formControl]="searchControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onSelected($event)"
+    >
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+    <app-spinner *ngIf="isLoading" class="spinner"></app-spinner>
+  </mat-form-field>
+  <app-toast-notification
+    *ngIf="noResults"
+    [text]="'No results found 😕'"
+    (onClose)="detectChange()"
+  ></app-toast-notification>
+</form>

@@ -1,0 +1,28 @@
+<div class="header">
+  <app-npm-autocomplete
+    (packageSelect)="onPackageSelect($event)"
+  ></app-npm-autocomplete>
+  <button
+    #showButton
+    (click)="showTable = true"
+    [class.visible]="rootPackageName"
+    class="header-button"
+  >
+    Tree Info
+  </button>
+</div>
+<div class="container">
+  <app-npm-tree
+    *ngIf="rootPackageName"
+    [rootPackageName]="rootPackageName"
+    (packageClick)="showTable = false"
+  >
+  </app-npm-tree>
+</div>
+<app-npm-statistics
+  *ngIf="showTable"
+  appClickOutside
+  [elementsIgnore]="[showButton]"
+  (clickOutside)="showTable = false"
+  (clickClose)="showTable = false"
+></app-npm-statistics>

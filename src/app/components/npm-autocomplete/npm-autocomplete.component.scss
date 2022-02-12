@@ -1,0 +1,11 @@
+.search-box {
+  width: 300px;
+  .spinner {
+    display: block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+  }
+}

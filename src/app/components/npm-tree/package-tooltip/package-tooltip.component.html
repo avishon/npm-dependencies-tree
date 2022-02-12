@@ -1,0 +1,5 @@
+<div class="tooltip">
+  <div>Version: {{ tooltipData.version }}</div>
+  <div *ngIf="tooltipData.isDevDependency">Dev Dependency</div>
+  <div>{{ tooltipData.numberOfDependents }} dependents in this tree</div>
+</div>

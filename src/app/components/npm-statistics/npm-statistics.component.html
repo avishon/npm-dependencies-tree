@@ -1,0 +1,25 @@
+<div class="box">
+  <div class="top">
+    <h3 class="title">Tree Statistics</h3>
+    <button (click)="clickClose.emit()" class="close"></button>
+  </div>
+  <table *ngIf="packagesList.length > 0">
+    <thead>
+      <tr>
+        <th><div class="th-title">Package name</div></th>
+        <th><div class="th-title">Number of dependents</div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let package of packagesList">
+        <td>
+          <div class="td-content">{{ package.name }}</div>
+        </td>
+        <td>
+          <div class="td-content">{{ package.count }}</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="packagesList.length == 0">No data</div>
+</div>

@@ -1,0 +1,76 @@
+.toast-message {
+  --text-padding: 10px 14px;
+  --close-button-display: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  width: fit-content;
+  line-height: 100%;
+  font-size: 16px;
+  transition: all 0.5s;
+  opacity: 0;
+  animation: show 0.5s ease-in forwards;
+  &.fixed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    --text-padding: 20px 30px;
+    --close-button-display: block;
+  }
+  &.hide {
+    animation: hide 0.3s ease-in forwards;
+  }
+  &.success {
+    background: #64dd17;
+  }
+  &.warning {
+    background: #f44336;
+  }
+  &.error {
+    background: #ef2a2a;
+  }
+  .message {
+    color: #fff;
+    padding: var(--text-padding);
+    text-align: center;
+  }
+  .close {
+    display: var(--close-button-display);
+    position: absolute;
+    top: 25%;
+    right: 15px;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(0, 0, 0);
+    text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+    opacity: 0.2;
+    cursor: pointer;
+    &::after {
+      content: "×";
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+@keyframes show {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
