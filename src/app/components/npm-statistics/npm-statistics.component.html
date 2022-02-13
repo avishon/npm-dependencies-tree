@@ -1,6 +1,6 @@
 <div class="box">
   <div class="top">
-    <h3 class="title">Tree Statistics</h3>
+    <h3 class="title">Tree Statistics <span class="info">({{ packagesList.length }} packages)</span></h3>
     <button (click)="clickClose.emit()" class="close"></button>
   </div>
   <table *ngIf="packagesList.length > 0">
