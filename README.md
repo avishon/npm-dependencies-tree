@@ -1,11 +1,11 @@
 
-# Npm Dependencies Tree
+# NPM Dependencies Tree
 
   
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
-## How to use
+## How to run
 
  1. Run `npm i`
  2. Run `npm start`
